@@ -1,0 +1,135 @@
+:root {
+  --card-bg: #fff;
+  --muted: #666;
+  --accent: #111;
+  --shadow: 0 6px 18px rgba(0,0,0,0.12);
+  --radius: 10px;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #f3f5f7;
+  margin: 32px;
+  color: #222;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.card {
+  display: flex;
+  gap: 20px;
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  align-items: stretch;
+}
+
+/* Left preview area */
+.preview {
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
+  border-radius: 8px;
+  overflow: wrap;
+}
+
+.preview img.main {
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+.play-btn {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  width: 56px;
+  height: 56px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35));
+}
+.play-btn svg { width: 24px; height: 24px; fill: #fff; }
+
+/* Right info panel */
+.info {
+  width: 300px;
+  background: #f8f9fb;
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+
+.info h4 {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.6px;
+}
+
+.plate {
+  margin-top: 4px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 34px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.timestamp {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.logo {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 6px;
+}
+.logo img {
+  max-width: 90px;
+  height: auto;
+}
+
+.thumb {
+  width: 84px;
+  height: 56px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ddd;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.meta {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .card { flex-direction: column; }
+  .info { width: 100%; }
+  .preview img.main { height: 240px; }
+}
+
+.mt-2 {
+    margin-top: 2em;
+}
