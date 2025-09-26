@@ -5,8 +5,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>License Plate Layout</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <link href="assets/Datatables/datatables.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='Datatables/datatables.min.css') }}">
 </head>
 
 <body>
@@ -14,12 +14,12 @@
     <div class="card" role="region" aria-label="Detected license plate preview">
       <div class="preview">
         <!-- large main image -->
-        <img class="main" src="assets/img/sample.png" alt="Vehicle rear view with license plate">
+         <img class="main" src="{{ url_for('static', filename='img/sample.png') }}" alt="Vehicle rear view with license plate">
       </div>
 
       <aside class="info" aria-label="Detected license plate information">
         <div class="logo">
-          <img src="assets/img/Vison-Colored-VI.png" alt="Company Logo">
+          <img src="{{ url_for('static', filename='img/Vison-Colored-VI.png') }}" alt="Company Logo">
         </div>
         <h4>Detected License Plate</h4>
 
@@ -38,39 +38,35 @@
           <table id="plateLog" class="display nowrap" style="width:100%">
             <thead>
               <tr>
+                <th>Timestamp</th>
                 <th>License Plate</th>
-                <th>Date</th>
-                <th>Time</th>
                 <th>Gate</th>
               </tr>
             </thead>
             <tbody>
+              {% for entry in entries %}
               <tr>
-                <td>7TXZ295</td>
-                <td>2024-04-24</td>
-                <td>15:30:45</td>
-                <td>North Gate</td>
+                <td>{{ entry.entry_display }}</td>
+                <td>{{ entry.license_plate }}</td>
+                <td>{{ entry.gate_entry }}</td>
               </tr>
-              <tr>
-                <td>9HJK882</td>
-                <td>2024-04-24</td>
-                <td>16:05:12</td>
-                <td>South Gate</td>
-              </tr>
-              <tr>
-                <td>3LMN561</td>
-                <td>2024-04-25</td>
-                <td>09:14:32</td>
-                <td>East Gate</td>
-              </tr>
+              {% endfor %}
             </tbody>
           </table>
       </section>
     </div>
   </div>
 
-  <script src="assets/DataTables/datatables.min.js"></script>
-  <script src="assets/app.js"></script>
+  <div id="imgModal" class="img-modal" aria-hidden="true" tabindex="-1">
+    <img id="modalImg" alt="Preview image" />
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- DataTables JS -->
+  <script src="{{ url_for('static', filename='Datatables/datatables.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='Datatables/buttons.min.js') }}"></script>
+  <!-- Custom JS -->
+  <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
 </body>
 
 </html>
